@@ -1,6 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components';
+import FAVICONIMG from '../assets/images/favicon.ico'
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -25,6 +26,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
+          <link rel="icon" type="image/ico" href={FAVICONIMG} sizes="16x16" />
         </Head>
         <body>
           <Main />

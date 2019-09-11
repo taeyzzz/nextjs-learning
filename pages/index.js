@@ -1,15 +1,16 @@
 import React from 'react'
-import Head from 'next/head'
+import Router from 'next/router'
 
-import "../global-style.scss"
-
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-    </Head>
-    hello
-  </div>
-)
-
-export default Home
+export default class extends React.Component {
+  static async getInitialProps({ res }) {
+    if (res) {
+      res.writeHead(302, {
+        Location: '/home'
+      })
+      res.end()
+    } else {
+      Router.push('/home')
+    }
+    return {}
+  }
+}

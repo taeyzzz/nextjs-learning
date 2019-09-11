@@ -11,12 +11,17 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "next": "9.0.5",
+    "next-images": "^1.1.2",
     "node-sass": "^4.12.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.10.6"
+    "babel-plugin-styled-components": "^1.10.6",
+    "redux-devtools-extension": "^2.13.8"
   }
 }
