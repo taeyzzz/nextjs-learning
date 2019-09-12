@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pm2 start",
+    "dev": "NODE_ENV=development PORT=3000 node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "serve": "NODE_ENV=production PORT=3000 node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
