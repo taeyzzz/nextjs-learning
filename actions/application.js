@@ -1,4 +1,4 @@
-// import { post, postForm, get } from '../utils'
+import { post, postForm, get } from '../utils'
 
 export const CHANGE_MESSAGE = "CHANGE_MESSAGE"
 
@@ -105,16 +105,8 @@ export const loadListUser = () => {
   return async dispatch => {
     dispatch(loadListUserRequest())
     try {
-      const listUser = await new Promise(function(resolve, reject) {
-        setTimeout(function () {
-          resolve([
-            { id:1, name: "taey", age: 15 },
-            { id:2, name: "hello", age: 120 },
-            { id:3, name: "good", age: 105 },
-          ])
-        }, 1000);
-      });
-      dispatch(loadListUserSuccess(listUser))
+      const response = await get("/api/users")
+      dispatch(loadListUserSuccess(response.users))
     }
     catch (err) {
       dispatch(loadListUserFailure(err))
