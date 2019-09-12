@@ -4,9 +4,9 @@ import Router from 'next/router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ApplicationActions from '../../actions/application'
-import ImageSrc from '../../assets/images/bg.jpg'
 
-import "../../global-style.scss"
+import Header from '../../components/Header/dynamic'
+import ImageSrc from '../../assets/images/bg.jpg'
 
 class HomePage extends React.Component{
   constructor(props){
@@ -33,6 +33,7 @@ class HomePage extends React.Component{
         <Head>
           <title>Home Page</title>
         </Head>
+        <Header />
         Home Page
         <img src={ImageSrc} width="400" height="300"/>
         <div>

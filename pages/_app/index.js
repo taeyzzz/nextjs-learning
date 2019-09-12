@@ -3,7 +3,8 @@ import App, {Container} from "next/app";
 import withRedux from "next-redux-wrapper";
 import { Provider } from 'react-redux'
 
-import configureStore from '../store'
+import configureStore from '../../store'
+import "./global-style.scss"
 
 const debug = process.env.NODE_ENV === 'development'
 

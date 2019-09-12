@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ApplicationActions from '../../actions/application'
 
-import "../../global-style.scss"
-
 class LoginPage extends React.Component{
   constructor(props){
     super(props)

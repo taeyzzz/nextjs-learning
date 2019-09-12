@@ -1,7 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components';
-import FAVICONIMG from '../assets/images/favicon.ico'
+import FAVICONIMG from '../../assets/images/favicon.ico'
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
