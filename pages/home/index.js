@@ -6,7 +6,9 @@ import { bindActionCreators } from 'redux'
 import * as ApplicationActions from '../../actions/application'
 
 import Header from '../../components/Header/dynamic'
-import ImageSrc from '../../assets/images/bg.jpg'
+import ApplicationLayout from '../../components/ApplicationLayout/dynamic'
+
+import HomePageStyled from './styled'
 
 class HomePage extends React.Component{
   constructor(props){
@@ -14,45 +16,47 @@ class HomePage extends React.Component{
   }
 
   componentDidMount(){
-    console.log('did mount');
+    this.props.loadListUser()
   }
 
-  handleGotoLoginClicked = () => {
-    Router.push('/login')
+  componentDidUpdate(prevProps, prevState){
+    console.log(prevProps);
   }
 
-  handleChangeMessageClicked = () => {
-    const message = this.refs.input.value
-    this.props.changeMessage(message)
+  getListUser(){
+    const listUser = this.props.application.listUser.map(user => {
+      return (
+        <div key={user.id}>
+          name: {user.name}, age: {user.age}
+        </div>
+      )
+    })
+    return (
+      <div className="list-user-container">
+        {listUser}
+      </div>
+    )
   }
 
   render(){
     console.log(this.props);
     return (
-      <div>
+      <HomePageStyled>
         <Head>
           <title>Home Page</title>
         </Head>
-        <Header />
-        Home Page
-        <img src={ImageSrc} width="400" height="300"/>
-        <div>
-          Message: {this.props.application.message}
-          <div>
-            <input type="text" ref="input"/>
-            <button onClick={this.handleChangeMessageClicked}>Change</button>
-          </div>
-        </div>
-        <button onClick={this.handleGotoLoginClicked}>Go to Login</button>
-      </div>
+        <ApplicationLayout>
+          {this.getListUser()}
+        </ApplicationLayout>
+      </HomePageStyled>
     )
   }
 }
 
 HomePage.getInitialProps = async function({ store, isServer, pathname, query }) {
   // DISPATCH ACTIONS HERE ONLY WITH `reduxStore.dispatch`
-  await store.dispatch(ApplicationActions.loadMessage())
-  const state = store.getState()
+  // await store.dispatch(ApplicationActions.loadMessage())
+  // const state = store.getState()
   return {}
 };
 

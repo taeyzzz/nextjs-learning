@@ -1,5 +1,6 @@
 import React from 'react'
 import App, {Container} from "next/app";
+import Router from 'next/router'
 import withRedux from "next-redux-wrapper";
 import { Provider } from 'react-redux'
 

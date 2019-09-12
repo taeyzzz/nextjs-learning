@@ -65,3 +65,62 @@ export const loadMessage = () => {
     }
   }
 }
+
+export const LOAD_LIST_USER_REQUEST = "LOAD_LIST_USER_REQUEST"
+export const LOAD_LIST_USER_SUCCESS = "LOAD_LIST_USER_SUCCESS"
+export const LOAD_LIST_USER_FAILURE = "LOAD_LIST_USER_FAILURE"
+export const LOAD_LIST_USER_IDLE = "LOAD_LIST_USER_IDLE"
+
+const loadListUserRequest = () => {
+  return {
+    type: LOAD_LIST_USER_REQUEST,
+  }
+}
+
+const loadListUserSuccess = (listUser) => {
+  return {
+    type: LOAD_LIST_USER_SUCCESS,
+    payload: {
+      listUser
+    }
+  }
+}
+
+const loadListUserFailure = (error) => {
+  return {
+    type: LOAD_LIST_USER_FAILURE,
+    payload: {
+      error,
+    }
+  }
+}
+
+const loadListUserIdle = () => {
+  return {
+    type: LOAD_LIST_USER_IDLE,
+  }
+}
+
+export const loadListUser = () => {
+  return async dispatch => {
+    dispatch(loadListUserRequest())
+    try {
+      const listUser = await new Promise(function(resolve, reject) {
+        setTimeout(function () {
+          resolve([
+            { id:1, name: "taey", age: 15 },
+            { id:2, name: "hello", age: 120 },
+            { id:3, name: "good", age: 105 },
+          ])
+        }, 1000);
+      });
+      dispatch(loadListUserSuccess(listUser))
+    }
+    catch (err) {
+      dispatch(loadListUserFailure(err))
+    }
+    finally{
+      dispatch(loadListUserIdle())
+    }
+  }
+}

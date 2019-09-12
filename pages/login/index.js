@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ApplicationActions from '../../actions/application'
 
+import LoginPageStyled from './styled'
+
 class LoginPage extends React.Component{
   constructor(props){
     super(props)
@@ -22,7 +24,7 @@ class LoginPage extends React.Component{
   render(){
     console.log(this.props);
     return (
-      <div>
+      <LoginPageStyled>
         <Head>
           <title>Login Page</title>
         </Head>
@@ -35,14 +37,14 @@ class LoginPage extends React.Component{
           </div>
         </div>
         <button onClick={this.handleGotoHomeClicked}>Go to Home</button>
-      </div>
+      </LoginPageStyled>
     )
   }
 }
 
 LoginPage.getInitialProps = async function({ store, isServer, pathname, query }) {
-  await store.dispatch(ApplicationActions.loadMessage())
-  const state = store.getState()
+  // await store.dispatch(ApplicationActions.loadMessage())
+  // const state = store.getState()
   return {}
 };
 

@@ -1,12 +1,18 @@
 import React from 'react'
+import Router from 'next/router'
 
 import HeaderStyled from './styled'
 
 class Header extends React.PureComponent{
+  handleLogoutClicked = () => {
+    Router.push('/login')
+  }
+
   render(){
     return (
       <HeaderStyled>
-        header
+        Header
+        <button onClick={this.handleLogoutClicked}>logout</button>
       </HeaderStyled>
     )
   }
