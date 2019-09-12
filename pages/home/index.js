@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Router from 'next/router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -29,10 +30,13 @@ class HomePage extends React.Component{
     console.log(this.props);
     return (
       <div>
+        <Head>
+          <title>Home Page</title>
+        </Head>
         Home Page
         <img src={ImageSrc} width="400" height="300"/>
         <div>
-          Message: {this.props.isServer ? this.props.initialPropsData.message : this.props.application.message}
+          Message: {this.props.application.message}
           <div>
             <input type="text" ref="input"/>
             <button onClick={this.handleChangeMessageClicked}>Change</button>
@@ -44,13 +48,10 @@ class HomePage extends React.Component{
   }
 }
 
-HomePage.getInitialProps = async function({ reduxStore, req }) {
-  const isServer = !!req
+HomePage.getInitialProps = async function({ store, isServer, pathname, query }) {
   // DISPATCH ACTIONS HERE ONLY WITH `reduxStore.dispatch`
-  await reduxStore.dispatch(ApplicationActions.loadMessage())
-  const state = reduxStore.getState()
-  console.log("isServer", isServer);
-  console.log(state);
+  await store.dispatch(ApplicationActions.loadMessage())
+  const state = store.getState()
   return {}
 };
 

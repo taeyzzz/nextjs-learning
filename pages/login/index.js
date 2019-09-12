@@ -30,7 +30,7 @@ class LoginPage extends React.Component{
         </Head>
         Login Page
         <div>
-          Message: {this.props.isServer ? this.props.initialPropsData.message : this.props.application.message}
+          Message: {this.props.application.message}
           <div>
             <input type="text" ref="input"/>
             <button onClick={this.handleChangeMessageClicked}>Change</button>
@@ -42,13 +42,9 @@ class LoginPage extends React.Component{
   }
 }
 
-LoginPage.getInitialProps = async function({ reduxStore, req }) {
-  const isServer = !!req
-  // DISPATCH ACTIONS HERE ONLY WITH `reduxStore.dispatch`
-  await reduxStore.dispatch(ApplicationActions.loadMessage())
-  const state = reduxStore.getState()
-  console.log("isServer", isServer);
-  console.log(state);
+LoginPage.getInitialProps = async function({ store, isServer, pathname, query }) {
+  await store.dispatch(ApplicationActions.loadMessage())
+  const state = store.getState()
   return {}
 };
 
