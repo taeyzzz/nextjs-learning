@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development PORT=3000 node server.js",
+    "dev": "next",
+    "dev-express": "NODE_ENV=development PORT=3000 node server.js",
     "build": "next build",
     "start": "next start",
     "serve": "NODE_ENV=production PORT=3000 node server.js"
