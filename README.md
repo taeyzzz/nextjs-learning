@@ -39,6 +39,19 @@ npm run export
 ```
 It gonna export next.js app to static html and output it gonna be out folder.
 
+- If you want to export to static file html. There is a few step to go through
+In 'next.config.js' you need to define all your path
+```javascript
+module.exports = withSass(withCSS(withImages({
+  exportPathMap: () => {
+    return {
+      '/': { page: '/' },
+      "/home": { page: "/home" }
+    };
+  }
+})));
+```
+
 ```bash
 npm run start
 ```
