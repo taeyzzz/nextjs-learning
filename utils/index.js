@@ -4,8 +4,8 @@ import React from "react" /*eslint-disable-line */
 const SERVER_URL = process.env.SERVER_URL
 
 export function call(url, method, data) {
-	// const serverUrl = `${SERVER_URL}${url}`
-	return fetch(url, {
+	const serverUrl = `${SERVER_URL}${url}`
+	return fetch(serverUrl, {
 		method: method,
 		credentials: 'include',
 		headers: {

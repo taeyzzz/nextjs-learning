@@ -15,10 +15,6 @@ class HomePage extends React.Component{
     super(props)
   }
 
-  componentDidMount(){
-    this.props.loadListUser()
-  }
-
   getListUser(){
     const listUser = this.props.application.listUser.map(user => {
       return (
@@ -50,9 +46,9 @@ class HomePage extends React.Component{
 
 HomePage.getInitialProps = async function({ store, isServer, pathname, query }) {
   // DISPATCH ACTIONS HERE ONLY WITH `reduxStore.dispatch`
-  // await store.dispatch(ApplicationActions.loadMessage())
-  // const state = store.getState()
-  return {}
+  await store.dispatch(ApplicationActions.loadListUser())
+  const state = store.getState()
+  return state
 };
 
 const mapStateToProps = (state) => {
