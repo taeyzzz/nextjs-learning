@@ -19,10 +19,6 @@ class HomePage extends React.Component{
     this.props.loadListUser()
   }
 
-  componentDidUpdate(prevProps, prevState){
-    console.log(prevProps);
-  }
-
   getListUser(){
     const listUser = this.props.application.listUser.map(user => {
       return (

@@ -27,4 +27,4 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(configureStore, { debug })(MyApp);
+export default withRedux(configureStore, { debug: false })(MyApp);
