@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
 import Router from 'next/router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -9,6 +10,8 @@ import Header from '../../components/Header/dynamic'
 import ApplicationLayout from '../../components/ApplicationLayout/dynamic'
 
 import HomePageStyled from './styled'
+
+import IMGSRC from '../../assets/images/bg.jpg'
 
 class HomePage extends React.Component{
   constructor(props){
@@ -38,6 +41,12 @@ class HomePage extends React.Component{
         </Head>
         <ApplicationLayout>
           {this.getListUser()}
+          <Image
+            src={IMGSRC}
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
         </ApplicationLayout>
       </HomePageStyled>
     )
