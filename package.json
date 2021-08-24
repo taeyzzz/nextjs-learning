@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "dev-express": "NODE_ENV=development SERVER_URL=http://localhost:3000 PORT=3000 node server.js",
+    "dev-express": "env-cmd -f ./env/.env.development node server.js",
     "build": "next build",
     "start": "next start",
     "export": "next export",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.6",
+    "env-cmd": "^10.1.0",
     "morgan": "^1.9.1",
     "redux-devtools-extension": "^2.13.8"
   }

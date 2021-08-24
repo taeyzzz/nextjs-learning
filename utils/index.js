@@ -2,6 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import React from "react" /*eslint-disable-line */
 
 const SERVER_URL = process.env.SERVER_URL
+console.log(process.env);
 
 export function call(url, method, data) {
 	const serverUrl = `${SERVER_URL}${url}`

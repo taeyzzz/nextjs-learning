@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ApplicationActions from '../../actions/application'
 
+import * as ga from '../../utils/ga'
+
 import LoginPageStyled from './styled'
 
 class LoginPage extends React.Component{
@@ -13,6 +15,12 @@ class LoginPage extends React.Component{
   }
 
   handleGotoHomeClicked = () => {
+    ga.event({
+      action: "login",
+      params : {
+        username: 'taey'
+      }
+    })
     Router.push('/home')
   }
 
